@@ -1,0 +1,8 @@
+rc: .lefthookrc
+pre-push:
+  parallel: true
+  commands:
+    lint:
+      run: yarn lint
+    types:
+      run: yarn tscheck
