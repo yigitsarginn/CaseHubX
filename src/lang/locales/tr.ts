@@ -36,6 +36,7 @@ export const tr: typeof en = {
       privacy: 'Gizlilik',
       restore: 'Geri Yükle',
       access_all_features: 'Tüm Özelliklere Erişin',
+      continue: 'Devam Et',
     },
     Home: {
       one: '1',
@@ -46,6 +47,7 @@ export const tr: typeof en = {
       good_morning: 'Günaydın! ⛅',
       good_afternoon: 'İyi öğlenler! ☀️',
       good_evening: 'İyi akşamlar! 🌙',
+      get_started: 'Başla',
     },
   },
 };

@@ -28,13 +28,7 @@ const _CategoriesItem = ({ item, onPress, ...rest }: Props) => {
         }}
         source={{ uri: item.image.url }}
       />
-      <View
-        style={{
-          position: 'absolute',
-          width: CARD_WIDTH,
-          top: 0,
-          maxWidth: CARD_WIDTH / 1.6,
-        }}>
+      <View style={styles.title}>
         <Text
           numberOfLines={2}
           fontFamily="Rubik_500Medium"
@@ -58,6 +52,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     width: CARD_WIDTH,
     backgroundColor: '#F4F6F6',
+  },
+  title: {
+    position: 'absolute',
+    width: CARD_WIDTH,
+    top: 0,
+    maxWidth: CARD_WIDTH / 1.6,
   },
 });
 

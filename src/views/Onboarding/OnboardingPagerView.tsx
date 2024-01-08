@@ -220,7 +220,7 @@ const _OnboardingPagerView = () => {
             fontFamily="Rubik_400Regular"
             color="White"
             variant="mediumPlus">
-            {t('Onboarding.Welcome.get_started')}
+            {t('Onboarding.Paywall.continue')}
           </Text>
         </Button>
         <View

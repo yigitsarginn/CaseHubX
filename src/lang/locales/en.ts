@@ -34,6 +34,7 @@ export const en = {
       privacy: 'Privacy',
       restore: 'Restore',
       access_all_features: 'Access All Features',
+      continue: 'Continue',
     },
     Home: {
       one: '1',
@@ -44,6 +45,7 @@ export const en = {
       good_morning: 'Good Morning! ⛅',
       good_afternoon: 'Good Afternoon! ☀️',
       good_evening: 'Good Evening! 🌙',
+      get_started: 'Get Started',
     },
   },
 };

@@ -18,6 +18,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppNavigation } from '@/utils/useAppNavigation';
 import { AppSliceActions } from '@/store/app.slice';
 import { useAppDispatch } from '@/store';
+import { StatusBar } from 'expo-status-bar';
 
 const CHARS = [
   {
@@ -116,37 +117,23 @@ const Paywall = () => {
   }, [navigation, dispatch]);
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.PaywallBackground }}>
+    <View style={styles.container}>
+      <StatusBar style="light" />
       <ImageBackground
-        style={{
-          width: '100%',
-          height: screen.height * 0.6034,
-        }}
+        style={styles.imageContainer}
         source={require('@/../assets/images/Onboarding/Paywall/Paywall.png')}>
         <TouchableOpacity
           onPress={closePaywall}
-          style={{
-            zIndex: 1,
-            position: 'absolute',
-            marginTop: top + rh(8),
-            right: rs(19),
-            width: rs(24),
-            height: rs(24),
-            borderRadius: rs(12),
-            backgroundColor: colors.Black40,
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignSelf: 'flex-end',
-          }}>
+          style={[
+            styles.closeContainer,
+            {
+              marginTop: top + rh(8),
+            },
+          ]}>
           <Icon icon="close" color={colors.White} size={rs(12)} />
         </TouchableOpacity>
 
-        <View
-          style={{
-            flex: 2,
-            justifyContent: 'flex-end',
-            paddingHorizontal: rs(24),
-          }}>
+        <View style={styles.topFooter}>
           <View style={styles.titleContainer}>
             <Text
               numberOfLines={1}
@@ -179,10 +166,7 @@ const Paywall = () => {
             {t('Onboarding.Paywall.access_all_features')}
           </Text>
         </View>
-        <SlidingCarousel
-          style={{ flex: 1, alignItems: 'center' }}
-          infinite={true}
-          time={14000}>
+        <SlidingCarousel style={styles.carousel} infinite={true} time={14000}>
           {CHARS.slice(0, 5).map((char, index) => {
             return (
               <View key={index}>
@@ -219,7 +203,7 @@ const Paywall = () => {
         </SlidingCarousel>
       </ImageBackground>
       <View style={styles.flexContainer}>{renderOfferings()}</View>
-      <View style={{ flex: 0.5 }}>
+      <View style={styles.bottomFooter}>
         <Button style={styles.button} onPress={() => {}}>
           <Text
             fontFamily="Rubik_500Medium"
@@ -295,6 +279,10 @@ const Paywall = () => {
 export default Paywall;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.PaywallBackground,
+  },
   layoutContainer: {
     width: screen.width / 2 - rs(32),
     backgroundColor: colors.White08,
@@ -338,5 +326,32 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: rh(10),
   },
-  close: {},
+  closeContainer: {
+    zIndex: 1,
+    position: 'absolute',
+    right: rs(19),
+    width: rs(24),
+    height: rs(24),
+    borderRadius: rs(12),
+    backgroundColor: colors.Black40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'flex-end',
+  },
+  topFooter: {
+    flex: 2,
+    justifyContent: 'flex-end',
+    paddingHorizontal: rs(24),
+  },
+  bottomFooter: {
+    flex: 0.5,
+  },
+  imageContainer: {
+    width: '100%',
+    height: screen.height * 0.6034,
+  },
+  carousel: {
+    flex: 1,
+    alignItems: 'center',
+  },
 });

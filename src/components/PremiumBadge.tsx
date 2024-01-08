@@ -52,24 +52,13 @@ const PremiumBadge = ({ onPress }: TouchableOpacityProps) => {
           <GradientText
             colors={['#E5C990', '#E4B046']}
             numberOfLines={1}
-            style={{
-              fontWeight: '600',
-              fontSize: rs(16),
-              lineHeight: rs(21),
-              letterSpacing: -0.32,
-            }}>
+            style={styles.title}>
             {t('Onboarding.Home.free_premium_available')}
           </GradientText>
           <GradientText
             colors={['#F5C25B', '#FFDE9C']}
             numberOfLines={1}
-            style={{
-              fontWeight: '400',
-              fontSize: rs(13),
-              lineHeight: rs(16),
-              letterSpacing: -0.32,
-              marginTop: rh(1),
-            }}>
+            style={styles.subtitle}>
             {t('Onboarding.Home.tap_to_upgrade')}
           </GradientText>
         </View>
@@ -123,5 +112,18 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+    fontWeight: '600',
+    fontSize: rs(16),
+    lineHeight: rs(21),
+    letterSpacing: -0.32,
+  },
+  subtitle: {
+    fontWeight: '400',
+    fontSize: rs(13),
+    lineHeight: rs(16),
+    letterSpacing: -0.32,
+    marginTop: rh(1),
   },
 });

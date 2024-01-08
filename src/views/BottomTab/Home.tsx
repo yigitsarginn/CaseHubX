@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   ActivityIndicator,
   FlatList,
@@ -20,6 +21,7 @@ import { Category, Question } from '@/types';
 import { DATA_CATEGORIES, DATA_QUESTIONS } from '@/utils/constants';
 import { CategoriesItem } from '@/components/CategoriesItem';
 import { QuestionsItem } from '@/components/QuestionsItem';
+import { StatusBar } from 'expo-status-bar';
 
 const Home = () => {
   const { top } = useSafeAreaInsets();
@@ -84,6 +86,7 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
+      <StatusBar style="dark" />
       <View
         style={[
           styles.header,
@@ -114,22 +117,11 @@ const Home = () => {
       </View>
       <View>
         <Image
-          style={{
-            position: 'absolute',
-            marginTop: rh(14),
-            width: rh(100),
-            height: rh(70),
-          }}
+          style={styles.leftObject}
           source={require('@/../assets/images/Home/LeftPlant.png')}
         />
         <Image
-          style={{
-            position: 'absolute',
-            marginTop: rh(14),
-            right: 0,
-            width: rh(100),
-            height: rh(65),
-          }}
+          style={styles.rightObject}
           source={require('@/../assets/images/Home/RightPlant.png')}
         />
         <View style={styles.input}>
@@ -155,23 +147,11 @@ const Home = () => {
             }}
           />
         </View>
-        <View
-          style={{
-            width: screen.width,
-            height: 0.2,
-            backgroundColor: colors.DividerDark10,
-            marginTop: rh(14),
-          }}
-        />
+        <View style={styles.divider} />
       </View>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#FBFAFA',
-        }}>
+      <View style={styles.premiumFooter}>
         <PremiumBadge onPress={() => {}} />
-        <ScrollView
-          style={{ flex: 1, backgroundColor: '#FBFAFA', marginTop: rh(24) }}>
+        <ScrollView style={styles.scrollContainer}>
           {isLoading ? (
             <ActivityIndicator />
           ) : (
@@ -184,7 +164,7 @@ const Home = () => {
                 fontFamily="Rubik_500Medium"
                 lineHeight={rs(20)}
                 variant="normal">
-                Get Started
+                {t('Onboarding.Home.get_started')}
               </Text>
               <FlatList
                 style={{
@@ -201,13 +181,7 @@ const Home = () => {
                 renderItem={renderQuestionItem}
               />
               <FlatList
-                style={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  marginHorizontal: rs(24),
-                  justifyContent: 'space-between',
-                  marginTop: rh(24),
-                }}
+                style={styles.categoriesList}
                 contentContainerStyle={{}}
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={item => item.id.toString()}
@@ -244,5 +218,40 @@ const styles = StyleSheet.create({
     marginHorizontal: rs(24),
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  categoriesList: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginHorizontal: rs(24),
+    justifyContent: 'space-between',
+    marginTop: rh(24),
+  },
+  scrollContainer: {
+    flex: 1,
+    backgroundColor: '#FBFAFA',
+    marginTop: rh(24),
+  },
+  leftObject: {
+    position: 'absolute',
+    marginTop: rh(14),
+    width: rh(100),
+    height: rh(70),
+  },
+  rightObject: {
+    position: 'absolute',
+    marginTop: rh(14),
+    right: 0,
+    width: rh(100),
+    height: rh(65),
+  },
+  divider: {
+    width: screen.width,
+    height: 0.2,
+    backgroundColor: colors.DividerDark10,
+    marginTop: rh(14),
+  },
+  premiumFooter: {
+    flex: 1,
+    backgroundColor: '#FBFAFA',
   },
 });
